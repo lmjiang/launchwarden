@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1277110132E26C2A9A366901 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498BEF50615CCE63C7E721FF /* DetailView.swift */; };
+		2787A8AFA29AE11D2FE5494A /* LaunchctlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0755B4014B502E1CB6964838 /* LaunchctlService.swift */; };
+		3D85092B8400D5203C55E93B /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814BAD613C71DBD8224BD56B /* SidebarView.swift */; };
+		52D06A216CBB1C55F9C2BD8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE31ED9265C07315B49056CD /* Assets.xcassets */; };
+		5AD6998C5F7E92A3ADF14557 /* LaunchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5193457725116332C56AB790 /* LaunchItem.swift */; };
+		5BE33797E2BCF71D534C5807 /* LaunchItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB0159209540BBF73708E0 /* LaunchItemsViewModel.swift */; };
+		692C1AAE1EF5A9802B747162 /* LaunchItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3362476FEDBC8ECE14D193 /* LaunchItemRow.swift */; };
+		6FB9BF3E522981419E1EEB3A /* LaunchWardenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA9F9C6E44957FD4840459D /* LaunchWardenApp.swift */; };
+		805B6BF07C30294B84FA0673 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795133A7C48156DF438AD60 /* ContentView.swift */; };
+		9486996EADA9534CFF51BBDA /* LaunchItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BE67788F702C7DE98AB223 /* LaunchItemListView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0755B4014B502E1CB6964838 /* LaunchctlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchctlService.swift; sourceTree = "<group>"; };
+		14DB0159209540BBF73708E0 /* LaunchItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchItemsViewModel.swift; sourceTree = "<group>"; };
+		37BE67788F702C7DE98AB223 /* LaunchItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchItemListView.swift; sourceTree = "<group>"; };
+		3FA9F9C6E44957FD4840459D /* LaunchWardenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchWardenApp.swift; sourceTree = "<group>"; };
+		498BEF50615CCE63C7E721FF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		5193457725116332C56AB790 /* LaunchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchItem.swift; sourceTree = "<group>"; };
+		5795133A7C48156DF438AD60 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5C7563272F65ED062B3F2B3A /* LaunchWarden.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LaunchWarden.entitlements; sourceTree = "<group>"; };
+		6AC67259BEBD712E35472E68 /* LaunchWarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaunchWarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		814BAD613C71DBD8224BD56B /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		AF3362476FEDBC8ECE14D193 /* LaunchItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchItemRow.swift; sourceTree = "<group>"; };
+		FE31ED9265C07315B49056CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets.xcassets; path = LaunchWarden/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0CDB33967DA4C4ADF1E89965 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5193457725116332C56AB790 /* LaunchItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		57DC0A6A8D15AE0D33761989 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0755B4014B502E1CB6964838 /* LaunchctlService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6A4E23286DCFCB4496BD4C44 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				14DB0159209540BBF73708E0 /* LaunchItemsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		72B996F2545F2A09EFFBD9A9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5795133A7C48156DF438AD60 /* ContentView.swift */,
+				498BEF50615CCE63C7E721FF /* DetailView.swift */,
+				37BE67788F702C7DE98AB223 /* LaunchItemListView.swift */,
+				AF3362476FEDBC8ECE14D193 /* LaunchItemRow.swift */,
+				814BAD613C71DBD8224BD56B /* SidebarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97F058882EE76641F104143A = {
+			isa = PBXGroup;
+			children = (
+				D48A7FDF963C97BE2128A271 /* LaunchWarden */,
+				FE31ED9265C07315B49056CD /* Assets.xcassets */,
+				D5F6C3280CE952509F8FE060 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D48A7FDF963C97BE2128A271 /* LaunchWarden */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB33967DA4C4ADF1E89965 /* Models */,
+				57DC0A6A8D15AE0D33761989 /* Services */,
+				6A4E23286DCFCB4496BD4C44 /* ViewModels */,
+				72B996F2545F2A09EFFBD9A9 /* Views */,
+				5C7563272F65ED062B3F2B3A /* LaunchWarden.entitlements */,
+				3FA9F9C6E44957FD4840459D /* LaunchWardenApp.swift */,
+			);
+			path = LaunchWarden;
+			sourceTree = "<group>";
+		};
+		D5F6C3280CE952509F8FE060 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AC67259BEBD712E35472E68 /* LaunchWarden.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6C75C6040DC539E3558EA85E /* LaunchWarden */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 437032574343C7B9273FC134 /* Build configuration list for PBXNativeTarget "LaunchWarden" */;
+			buildPhases = (
+				DDFFA13AA7B91574B5A1C173 /* Sources */,
+				CE868E350FB75863B99DC58A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LaunchWarden;
+			packageProductDependencies = (
+			);
+			productName = LaunchWarden;
+			productReference = 6AC67259BEBD712E35472E68 /* LaunchWarden.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9F9BA3A4AA80D9F0FE668E12 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					6C75C6040DC539E3558EA85E = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9959D7BF386EB7F02AB27633 /* Build configuration list for PBXProject "LaunchWarden" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 97F058882EE76641F104143A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6C75C6040DC539E3558EA85E /* LaunchWarden */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE868E350FB75863B99DC58A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D06A216CBB1C55F9C2BD8D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DDFFA13AA7B91574B5A1C173 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				805B6BF07C30294B84FA0673 /* ContentView.swift in Sources */,
+				1277110132E26C2A9A366901 /* DetailView.swift in Sources */,
+				5AD6998C5F7E92A3ADF14557 /* LaunchItem.swift in Sources */,
+				9486996EADA9534CFF51BBDA /* LaunchItemListView.swift in Sources */,
+				692C1AAE1EF5A9802B747162 /* LaunchItemRow.swift in Sources */,
+				5BE33797E2BCF71D534C5807 /* LaunchItemsViewModel.swift in Sources */,
+				6FB9BF3E522981419E1EEB3A /* LaunchWardenApp.swift in Sources */,
+				2787A8AFA29AE11D2FE5494A /* LaunchctlService.swift in Sources */,
+				3D85092B8400D5203C55E93B /* SidebarView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3916287B76E1203F6740765C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LaunchWarden/LaunchWarden.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = LaunchWarden;
+				INFOPLIST_KEY_LSUIElement = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.launchwarden.LaunchWarden;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CE1CDEBD7F98A792ADE587FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = LaunchWarden;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		D4845B8B01E4911D21772112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LaunchWarden/LaunchWarden.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = LaunchWarden;
+				INFOPLIST_KEY_LSUIElement = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.launchwarden.LaunchWarden;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FE298105820C8978A0210D64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = LaunchWarden;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		437032574343C7B9273FC134 /* Build configuration list for PBXNativeTarget "LaunchWarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3916287B76E1203F6740765C /* Debug */,
+				D4845B8B01E4911D21772112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9959D7BF386EB7F02AB27633 /* Build configuration list for PBXProject "LaunchWarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE1CDEBD7F98A792ADE587FA /* Debug */,
+				FE298105820C8978A0210D64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9F9BA3A4AA80D9F0FE668E12 /* Project object */;
+}
