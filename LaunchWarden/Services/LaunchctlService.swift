@@ -9,17 +9,13 @@ actor LaunchctlService {
     private init() {}
 
     func fetchAllItems() async -> [LaunchItem] {
-        print("[LaunchctlService] fetchAllItems started")
         var items: [LaunchItem] = []
 
         for type in LaunchItemType.allCases {
-            print("[LaunchctlService] Fetching items for type: \(type.rawValue)")
             let typeItems = await fetchItems(for: type)
-            print("[LaunchctlService] Found \(typeItems.count) items for \(type.rawValue)")
             items.append(contentsOf: typeItems)
         }
 
-        print("[LaunchctlService] Total items: \(items.count)")
         return items.sorted { $0.label < $1.label }
     }
 
@@ -27,34 +23,25 @@ actor LaunchctlService {
         let directory = type.directory
         let fileManager = FileManager.default
 
-        print("[LaunchctlService] Checking directory: \(directory)")
-
         guard fileManager.fileExists(atPath: directory) else {
-            print("[LaunchctlService] Directory does not exist: \(directory)")
             return []
         }
 
         guard let files = try? fileManager.contentsOfDirectory(atPath: directory) else {
-            print("[LaunchctlService] Failed to read directory: \(directory)")
             return []
         }
 
         let plistFiles = files.filter { $0.hasSuffix(".plist") }
-        print("[LaunchctlService] Found \(plistFiles.count) plist files in \(directory)")
         var items: [LaunchItem] = []
 
         let runningServices = await getRunningServices(for: type)
-        print("[LaunchctlService] Running services count: \(runningServices.count)")
         let disabledServices = await getDisabledServices(for: type)
-        print("[LaunchctlService] Disabled services count: \(disabledServices.count)")
 
         for file in plistFiles {
             let path = (directory as NSString).appendingPathComponent(file)
 
             if let item = parsePlist(at: path, type: type, runningServices: runningServices, disabledServices: disabledServices) {
                 items.append(item)
-            } else {
-                print("[LaunchctlService] Failed to parse: \(file)")
             }
         }
 
@@ -94,9 +81,7 @@ actor LaunchctlService {
 
     private func getRunningServices(for type: LaunchItemType) async -> Set<String> {
         let domain = type == .systemDaemon ? "system" : "gui/\(uid)"
-        print("[LaunchctlService] getRunningServices for domain: \(domain)")
         let output = await runCommand("/bin/launchctl", arguments: ["print", domain])
-        print("[LaunchctlService] launchctl print output length: \(output.count)")
 
         var services = Set<String>()
         let lines = output.components(separatedBy: "\n")
@@ -180,20 +165,17 @@ actor LaunchctlService {
     }
 
     private func runPrivilegedCommands(for launchItem: LaunchItem, domain: String, enable: Bool) async -> Result<Void, LaunchctlError> {
-        // Build shell command
         let command: String
         if enable {
             if launchItem.type == .systemDaemon {
                 command = "/bin/launchctl enable \(domain)/\(launchItem.label); /bin/launchctl bootstrap \(domain) '\(launchItem.path)'"
             } else {
-                // System Agent: runs in user context but needs admin to modify
                 command = "/bin/launchctl asuser \(uid) /bin/launchctl enable \(domain)/\(launchItem.label); /bin/launchctl asuser \(uid) /bin/launchctl bootstrap \(domain) '\(launchItem.path)'"
             }
         } else {
             if launchItem.type == .systemDaemon {
                 command = "/bin/launchctl bootout \(domain)/\(launchItem.label) 2>/dev/null; /bin/launchctl disable \(domain)/\(launchItem.label)"
             } else {
-                // System Agent: runs in user context but needs admin to modify
                 command = "/bin/launchctl asuser \(uid) /bin/launchctl bootout \(domain)/\(launchItem.label) 2>/dev/null; /bin/launchctl asuser \(uid) /bin/launchctl disable \(domain)/\(launchItem.label)"
             }
         }
@@ -213,7 +195,7 @@ actor LaunchctlService {
                     let errorNumber = error[NSAppleScript.errorNumber] as? Int ?? 0
                     let message = error[NSAppleScript.errorMessage] as? String ?? "Unknown error"
 
-                    if errorNumber == -128 { // User cancelled
+                    if errorNumber == -128 {
                         continuation.resume(returning: .failure(.userCancelled))
                     } else {
                         continuation.resume(returning: .failure(.commandFailed(message)))
@@ -226,8 +208,6 @@ actor LaunchctlService {
     }
 
     private nonisolated func runCommand(_ command: String, arguments: [String]) async -> String {
-        print("[LaunchctlService] Running: \(command) \(arguments.joined(separator: " "))")
-
         let process = Process()
         process.executableURL = URL(fileURLWithPath: command)
         process.arguments = arguments
@@ -238,17 +218,10 @@ actor LaunchctlService {
 
         do {
             try process.run()
-
-            // Read data BEFORE waiting (to avoid pipe buffer deadlock)
             let data = pipe.fileHandleForReading.readDataToEndOfFile()
-
             process.waitUntilExit()
-
-            let output = String(data: data, encoding: .utf8) ?? ""
-            print("[LaunchctlService] Command finished, output length: \(output.count)")
-            return output
+            return String(data: data, encoding: .utf8) ?? ""
         } catch {
-            print("[LaunchctlService] Command failed: \(error)")
             return ""
         }
     }

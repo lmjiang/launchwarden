@@ -9,49 +9,52 @@ struct LaunchItemListView: View {
         if items.isEmpty {
             emptyState
         } else {
-            ScrollViewReader { proxy in
-                List(selection: $selectedItem) {
+            ScrollView {
+                LazyVStack(spacing: 6) {
                     ForEach(items) { item in
                         LaunchItemRow(
                             item: item,
                             isSelected: selectedItem?.id == item.id,
                             onToggle: { onToggle(item) }
                         )
-                        .tag(item)
-                        .id(item.id)
-                        .listRowInsets(EdgeInsets())
-                        .listRowSeparator(.visible)
-                    }
-                }
-                .listStyle(.plain)
-                .onChange(of: selectedItem) { _, newValue in
-                    if let item = newValue {
-                        withAnimation {
-                            proxy.scrollTo(item.id, anchor: .center)
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.15)) {
+                                selectedItem = item
+                            }
                         }
                     }
                 }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
             }
+            .background(Color(nsColor: .windowBackgroundColor))
         }
     }
 
     private var emptyState: some View {
         VStack(spacing: 16) {
-            Image(systemName: "tray")
-                .font(.system(size: 48))
-                .foregroundStyle(.tertiary)
+            ZStack {
+                Circle()
+                    .fill(Color.secondary.opacity(0.1))
+                    .frame(width: 80, height: 80)
 
-            Text("No Launch Items")
-                .font(.title2)
-                .fontWeight(.medium)
+                Image(systemName: "tray")
+                    .font(.system(size: 32, weight: .light))
+                    .foregroundStyle(.tertiary)
+            }
 
-            Text("No launch items match your current filter or search.")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+            VStack(spacing: 6) {
+                Text("No Launch Items")
+                    .font(.system(size: 16, weight: .semibold))
+
+                Text("No items match your current filter or search.")
+                    .font(.system(size: 13))
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
+        .background(Color(nsColor: .windowBackgroundColor))
     }
 }
 
@@ -76,5 +79,5 @@ struct LaunchItemListView: View {
         selectedItem: .constant(nil),
         onToggle: { _ in }
     )
-    .frame(width: 400, height: 300)
+    .frame(width: 450, height: 400)
 }

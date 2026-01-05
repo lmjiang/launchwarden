@@ -5,33 +5,58 @@ struct LaunchItemRow: View {
     let isSelected: Bool
     let onToggle: () -> Void
 
-    var body: some View {
-        HStack(spacing: 12) {
-            statusIndicator
+    @State private var isHovered = false
 
-            VStack(alignment: .leading, spacing: 3) {
+    var body: some View {
+        HStack(spacing: 14) {
+            // Status indicator with glow effect
+            ZStack {
+                Circle()
+                    .fill(statusColor.opacity(0.2))
+                    .frame(width: 32, height: 32)
+
+                Circle()
+                    .fill(statusColor)
+                    .frame(width: 10, height: 10)
+
+                if item.isRunning {
+                    Circle()
+                        .stroke(statusColor.opacity(0.5), lineWidth: 2)
+                        .frame(width: 18, height: 18)
+                }
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
                 Text(item.displayName)
-                    .font(.body)
-                    .fontWeight(.medium)
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(.primary)
                     .lineLimit(1)
 
-                HStack(spacing: 8) {
-                    Label(item.type.rawValue, systemImage: item.type.icon)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                HStack(spacing: 6) {
+                    Text(item.vendor)
+                        .font(.system(size: 11))
+                        .foregroundStyle(.tertiary)
 
-                    if item.isRunning {
-                        statusBadge(text: "Running", color: .green)
-                    } else if item.isEnabled {
-                        statusBadge(text: "Loaded", color: .blue)
-                    } else {
-                        statusBadge(text: "Disabled", color: .secondary)
+                    Text("•")
+                        .font(.system(size: 9))
+                        .foregroundStyle(.quaternary)
+
+                    HStack(spacing: 4) {
+                        Image(systemName: item.type.icon)
+                            .font(.system(size: 9))
+                        Text(item.type.rawValue)
+                            .font(.system(size: 11))
                     }
+                    .foregroundStyle(.secondary)
                 }
             }
 
             Spacer()
 
+            // Status badge
+            statusBadge
+
+            // Toggle
             Toggle("", isOn: Binding(
                 get: { item.isEnabled },
                 set: { _ in onToggle() }
@@ -39,24 +64,42 @@ struct LaunchItemRow: View {
             .toggleStyle(.switch)
             .labelsHidden()
             .controlSize(.small)
+            .scaleEffect(0.8)
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
-        .background(isSelected ? Color.accentColor.opacity(0.15) : Color.clear)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(backgroundColor)
+        }
+        .overlay {
+            RoundedRectangle(cornerRadius: 10)
+                .strokeBorder(borderColor, lineWidth: 1)
+        }
         .contentShape(Rectangle())
+        .onHover { hovering in
+            withAnimation(.easeInOut(duration: 0.15)) {
+                isHovered = hovering
+            }
+        }
     }
 
-    private var statusIndicator: some View {
-        Circle()
-            .fill(statusColor)
-            .frame(width: 10, height: 10)
-            .overlay {
-                if item.isRunning {
-                    Circle()
-                        .stroke(statusColor.opacity(0.5), lineWidth: 2)
-                        .frame(width: 14, height: 14)
-                }
-            }
+    private var backgroundColor: Color {
+        if isSelected {
+            return Color.accentColor.opacity(0.12)
+        } else if isHovered {
+            return Color.primary.opacity(0.04)
+        }
+        return Color.clear
+    }
+
+    private var borderColor: Color {
+        if isSelected {
+            return Color.accentColor.opacity(0.3)
+        } else if isHovered {
+            return Color.primary.opacity(0.08)
+        }
+        return Color.primary.opacity(0.06)
     }
 
     private var statusColor: Color {
@@ -69,24 +112,37 @@ struct LaunchItemRow: View {
         }
     }
 
-    private func statusBadge(text: String, color: Color) -> some View {
+    @ViewBuilder
+    private var statusBadge: some View {
+        let (text, color) = statusInfo
         Text(text)
-            .font(.caption2)
-            .fontWeight(.medium)
+            .font(.system(size: 10, weight: .medium))
             .foregroundStyle(color)
-            .padding(.horizontal, 6)
-            .padding(.vertical, 2)
-            .background(color.opacity(0.15))
-            .clipShape(Capsule())
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background {
+                Capsule()
+                    .fill(color.opacity(0.12))
+            }
+    }
+
+    private var statusInfo: (String, Color) {
+        if item.isRunning {
+            return ("Running", .green)
+        } else if item.isEnabled {
+            return ("Loaded", .blue)
+        } else {
+            return ("Disabled", .secondary)
+        }
     }
 }
 
 #Preview {
-    VStack(spacing: 0) {
+    VStack(spacing: 8) {
         LaunchItemRow(
             item: LaunchItem(
-                label: "com.apple.Safari.helper",
-                path: "/Library/LaunchAgents/com.apple.Safari.helper.plist",
+                label: "com.apple.Safari.SafeBrowsing",
+                path: "/Library/LaunchAgents/com.apple.Safari.SafeBrowsing.plist",
                 type: .userAgent,
                 isEnabled: true,
                 isRunning: true
@@ -94,8 +150,6 @@ struct LaunchItemRow: View {
             isSelected: false,
             onToggle: {}
         )
-
-        Divider()
 
         LaunchItemRow(
             item: LaunchItem(
@@ -109,8 +163,6 @@ struct LaunchItemRow: View {
             onToggle: {}
         )
 
-        Divider()
-
         LaunchItemRow(
             item: LaunchItem(
                 label: "com.old.service",
@@ -123,5 +175,6 @@ struct LaunchItemRow: View {
             onToggle: {}
         )
     }
-    .frame(width: 400)
+    .padding()
+    .frame(width: 450)
 }
