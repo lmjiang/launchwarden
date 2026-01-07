@@ -41,13 +41,10 @@ struct LaunchItemRow: View {
                         .font(.system(size: 9))
                         .foregroundStyle(.quaternary)
 
-                    HStack(spacing: 4) {
-                        Image(systemName: item.type.icon)
-                            .font(.system(size: 9))
-                        Text(item.type.rawValue)
-                            .font(.system(size: 11))
-                    }
-                    .foregroundStyle(.secondary)
+                    Image(systemName: item.type.icon)
+                        .font(.system(size: 10))
+                        .foregroundStyle(.secondary)
+                        .help(item.type.rawValue)
                 }
             }
 
