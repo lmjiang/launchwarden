@@ -1,0 +1,45 @@
+name: LaunchWarden
+options:
+  bundleIdPrefix: com.launchwarden
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+  groupSortPosition: top
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    PRODUCT_NAME: LaunchWarden
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_HARDENED_RUNTIME: YES
+    INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.utilities"
+    INFOPLIST_KEY_NSHumanReadableCopyright: "Copyright © 2024"
+
+targets:
+  LaunchWarden:
+    type: application
+    platform: macOS
+    sources:
+      - path: LaunchWarden
+        excludes:
+          - "*.xcassets/**"
+      - path: LaunchWarden/Assets.xcassets
+        type: folder
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: LaunchWarden
+        INFOPLIST_KEY_LSUIElement: false
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: YES
+    entitlements:
+      path: LaunchWarden/LaunchWarden.entitlements
+      properties:
+        com.apple.security.app-sandbox: false
+        com.apple.security.automation.apple-events: true
