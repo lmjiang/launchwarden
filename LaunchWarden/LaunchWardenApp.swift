@@ -8,7 +8,7 @@ struct LaunchWardenApp: App {
         }
         .windowStyle(.automatic)
         .windowResizability(.contentMinSize)
-        .defaultSize(width: 1100, height: 700)
+        .defaultSize(width: 1280, height: 750)
         .commands {
             // Disable new window/tab
             CommandGroup(replacing: .newItem) {}

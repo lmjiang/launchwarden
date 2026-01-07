@@ -62,7 +62,7 @@ struct ContentView: View {
                     }
                 )
             }
-            .navigationSplitViewColumnWidth(min: 340, ideal: 420, max: 520)
+            .navigationSplitViewColumnWidth(min: 420, ideal: 500, max: 600)
         } detail: {
             DetailView(
                 item: viewModel.selectedItem,

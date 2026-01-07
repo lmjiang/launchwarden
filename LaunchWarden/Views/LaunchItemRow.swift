@@ -66,8 +66,8 @@ struct LaunchItemRow: View {
             .controlSize(.small)
             .scaleEffect(0.8)
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 10)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
         .background {
             RoundedRectangle(cornerRadius: 10)
                 .fill(backgroundColor)
