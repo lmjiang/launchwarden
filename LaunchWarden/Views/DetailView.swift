@@ -249,6 +249,17 @@ struct DetailView: View {
             }
             .buttonStyle(.bordered)
             .controlSize(.large)
+            
+            Button {
+                openLogsInConsole(item)
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "doc.text.magnifyingglass")
+                    Text("View Logs")
+                }
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
 
             Spacer()
 
@@ -278,6 +289,27 @@ struct DetailView: View {
         } else {
             return .gray
         }
+    }
+    
+    private func openLogsInConsole(_ item: LaunchItem) {
+        // Open Console.app with a predicate filter for this service
+        // Using `log show` command to get logs, then open Console
+        let predicate = "subsystem contains '\\(item.label)' OR process contains '\\(item.label)'"
+        let script = """
+        tell application "Console"
+            activate
+        end tell
+        """
+        
+        // First, try to open Console.app
+        if let consoleURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.Console") {
+            NSWorkspace.shared.open(consoleURL)
+        }
+        
+        // Copy a helpful log command to clipboard so user can paste it
+        let logCommand = "log show --predicate '\\(predicate)' --last 1h --style compact"
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(logCommand, forType: .string)
     }
 
     private var emptyState: some View {
