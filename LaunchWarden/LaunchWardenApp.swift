@@ -5,6 +5,7 @@ struct LaunchWardenApp: App {
     var body: some Scene {
         Window("LaunchWarden", id: "main") {
             ContentView()
+                .preferredColorScheme(.light)
         }
         .windowStyle(.automatic)
         .windowResizability(.contentMinSize)
