@@ -26,13 +26,9 @@ A simple macOS utility for managing launchd startup services.
 2. Drag `LaunchWarden.app` to Applications
 3. Run and enjoy!
 
-## Screenshots
-
-*Coming soon*
-
 ## About
 
-🤖 **This app was built entirely by AI** (Claude/Gemini), with Kevin supervising and testing.
+🤖 **This app was built entirely by AI** (Claude/Gemini), with human supervising and testing.
 
 A fun experiment in AI-assisted macOS development!
 
