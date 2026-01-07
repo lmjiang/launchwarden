@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var viewModel = LaunchItemsViewModel()
     @State private var columnVisibility = NavigationSplitViewVisibility.all
+    @FocusState private var isSearchFocused: Bool
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
@@ -13,7 +14,7 @@ struct ContentView: View {
             .navigationSplitViewColumnWidth(min: 180, ideal: 200, max: 240)
         } content: {
             VStack(spacing: 0) {
-                // Search bar
+                // Search bar with X button
                 HStack(spacing: 8) {
                     Image(systemName: "magnifyingglass")
                         .font(.system(size: 13))
@@ -22,6 +23,19 @@ struct ContentView: View {
                     TextField("Search services...", text: $viewModel.searchText)
                         .textFieldStyle(.plain)
                         .font(.system(size: 13))
+                        .focused($isSearchFocused)
+                    
+                    // Clear button (X)
+                    if !viewModel.searchText.isEmpty {
+                        Button {
+                            viewModel.searchText = ""
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.tertiary)
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
@@ -31,7 +45,7 @@ struct ContentView: View {
                 }
                 .overlay {
                     RoundedRectangle(cornerRadius: 8)
-                        .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1)
+                        .strokeBorder(isSearchFocused ? Color.accentColor.opacity(0.5) : Color.primary.opacity(0.08), lineWidth: 1)
                 }
                 .padding(.horizontal, 12)
                 .padding(.top, 12)
@@ -82,7 +96,24 @@ struct ContentView: View {
                 .keyboardShortcut("r", modifiers: .command)
                 .disabled(viewModel.isLoading)
                 .help("Refresh (Cmd+R)")
+                
+                // Hidden button for Cmd+F search shortcut
+                Button {
+                    isSearchFocused = true
+                } label: {
+                    EmptyView()
+                }
+                .keyboardShortcut("f", modifiers: .command)
+                .hidden()
             }
+        }
+        .onKeyPress(.escape) {
+            if isSearchFocused {
+                viewModel.searchText = ""
+                isSearchFocused = false
+                return .handled
+            }
+            return .ignored
         }
         .task {
             await viewModel.loadItems()
