@@ -255,7 +255,7 @@ struct DetailView: View {
             } label: {
                 HStack(spacing: 6) {
                     Image(systemName: "doc.text.magnifyingglass")
-                    Text("View Logs")
+                    Text("View in Console")
                 }
             }
             .buttonStyle(.bordered)
