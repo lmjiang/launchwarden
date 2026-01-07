@@ -63,6 +63,9 @@ struct ContentView: View {
                 )
             }
             .navigationSplitViewColumnWidth(min: 420, ideal: 500, max: 600)
+            .onChange(of: viewModel.selectedItem) { _, _ in
+                isSearchFocused = false
+            }
         } detail: {
             DetailView(
                 item: viewModel.selectedItem,
